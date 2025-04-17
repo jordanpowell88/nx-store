@@ -35,6 +35,9 @@
   "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"],
   "references": [
     {
+      "path": "../../libs/checkout/tsconfig.lib.json"
+    },
+    {
       "path": "../../libs/products/product/tsconfig.lib.json"
     },
     {

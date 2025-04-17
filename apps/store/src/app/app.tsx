@@ -5,6 +5,7 @@ import { Product } from '@nx-bitovi/product';
 import { Route, Routes, Link } from 'react-router-dom';
 import NxWelcome from './nx-welcome';
 import styles from './app.module.scss';
+import { Checkout } from '@nx-bitovi/checkout';
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
@@ -13,6 +14,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         <ul>
           <li><Link to="/">Home</Link></li>
           <li><Link to="/products">Products</Link></li>
+          <li><Link to="/checkout"><span role="img" aria-label="cart">🛒</span></Link></li>
         </ul>
       </nav>
       {children}
@@ -49,6 +51,15 @@ export function App() {
             }
           />
         </Route>
+        <Route
+          path="/checkout"
+          element={
+            <Layout>
+              <Checkout />
+            </Layout>
+          }
+        />
+
       </Routes>
   );
 }
