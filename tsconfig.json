@@ -8,6 +8,18 @@
     },
     {
       "path": "./apps/store"
+    },
+    {
+      "path": "./libs/products"
+    },
+    {
+      "path": "./libs/products/product"
+    },
+    {
+      "path": "./libs/types"
+    },
+    {
+      "path": "./libs/types"
     }
   ]
 }

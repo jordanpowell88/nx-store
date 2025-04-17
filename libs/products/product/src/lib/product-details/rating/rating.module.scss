@@ -1,0 +1,12 @@
+.rating-container {
+    
+    .rating-stars {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .rating-count {
+        font-size: 0.8rem;
+    }
+
+}

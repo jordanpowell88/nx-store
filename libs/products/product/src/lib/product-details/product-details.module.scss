@@ -1,0 +1,11 @@
+.product-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    .price {
+        font-weight: bold;
+        margin: 0;
+        padding: 0;
+    }
+}
