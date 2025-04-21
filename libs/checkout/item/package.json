@@ -1,5 +1,5 @@
 {
-  "name": "@nx-bitovi/Item",
+  "name": "@nx-bitovi/item",
   "version": "0.0.1",
   "main": "./src/index.ts",
   "types": "./src/index.ts",
@@ -12,6 +12,6 @@
     "./package.json": "./package.json"
   },
   "nx": {
-    "name": "Item"
+    "name": "item"
   }
 }

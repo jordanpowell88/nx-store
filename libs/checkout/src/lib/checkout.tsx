@@ -3,6 +3,7 @@ import styles from './checkout.module.scss';
 import { Item } from '@nx-bitovi/item';
 import { useCart } from '@nx-bitovi/cart-context';
 import { formatPrice } from '@nx-bitovi/utils';
+
 export function Checkout() {
   const { items, clearCart } = useCart();
 

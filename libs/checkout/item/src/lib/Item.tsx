@@ -2,6 +2,7 @@ import { Product } from '@nx-bitovi/types';
 import styles from './Item.module.scss';
 import { useCart } from '@nx-bitovi/cart-context';
 import { truncate, formatPrice } from '@nx-bitovi/utils';
+
 export const Item: React.FC<Product> = ({ id, title, price, image }) => {
   const { removeItem } = useCart();
 
