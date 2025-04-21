@@ -20,10 +20,12 @@ export function Checkout() {
           ))}
         </div>
       )}
-      <div className={styles['totalContainer']}>
-        {items.length > 0 && <button onClick={() => clearCart()}>Clear Cart</button>}
-        <p className={styles['total']}>Total: {formatPrice(total)}</p>
-      </div>
+      {items.length > 0 && (
+        <div className={styles['totalContainer']}>
+          <button onClick={() => clearCart()}>Clear Cart</button>
+          <p className={styles['total']}>Total: {formatPrice(total)}</p>
+        </div>
+      )}
     </div>
   );
 }
