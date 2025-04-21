@@ -12,7 +12,7 @@
     ],
     "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci.yml"]
   },
-  "nxCloudId": "68015500d0a42172b0639e16",
+  "nxCloudAccessToken": "YjMwODk5MDMtN2FhNS00MzJkLTk2MjEtOGUwYzI0OTQ3ZmE4fHJlYWQtd3JpdGU=",
   "sync": {
     "applyChanges": true
   },
