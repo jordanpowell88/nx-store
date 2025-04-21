@@ -18,6 +18,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch all history and branches
       # Set node/npm/yarn versions using volta
       - uses: volta-cli/action@v4
         with:
