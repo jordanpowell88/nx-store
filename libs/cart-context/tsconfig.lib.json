@@ -1,5 +1,5 @@
 {
-  "extends": "../../../tsconfig.base.json",
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "outDir": "dist",
     "types": [
@@ -30,13 +30,7 @@
   "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"],
   "references": [
     {
-      "path": "../../cart-context/tsconfig.lib.json"
-    },
-    {
-      "path": "../../utils/tsconfig.lib.json"
-    },
-    {
-      "path": "../../types/tsconfig.lib.json"
+      "path": "../types/tsconfig.lib.json"
     }
   ]
 }

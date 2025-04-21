@@ -23,6 +23,15 @@
     },
     {
       "path": "./libs/checkout"
+    },
+    {
+      "path": "./libs/checkout/item"
+    },
+    {
+      "path": "./libs/cart-context"
+    },
+    {
+      "path": "./libs/utils"
     }
   ]
 }

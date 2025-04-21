@@ -3,10 +3,10 @@
   "include": [],
   "references": [
     {
-      "path": "../../cart-context"
+      "path": "../../utils"
     },
     {
-      "path": "../../utils"
+      "path": "../../cart-context"
     },
     {
       "path": "../../types"

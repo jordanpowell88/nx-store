@@ -3,12 +3,6 @@
   "include": [],
   "references": [
     {
-      "path": "../cart-context"
-    },
-    {
-      "path": "item"
-    },
-    {
       "path": "./tsconfig.lib.json"
     }
   ],

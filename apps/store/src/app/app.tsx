@@ -6,6 +6,7 @@ import { Route, Routes, Link } from 'react-router-dom';
 import NxWelcome from './nx-welcome';
 import styles from './app.module.scss';
 import { Checkout } from '@nx-bitovi/checkout';
+import { CartProvider } from '@nx-bitovi/cart-context';
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
@@ -24,6 +25,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
 export function App() {
   return (
+    <CartProvider>
       <Routes>
         <Route
           path="/"
@@ -32,7 +34,7 @@ export function App() {
               <NxWelcome title="store" />
             </Layout>
           }
-        />
+          />
         <Route path="/products">
           <Route
             index
@@ -41,7 +43,7 @@ export function App() {
                 <Products />
               </Layout>
             }
-          />
+            />
           <Route
             path=":id"
             element={
@@ -49,7 +51,7 @@ export function App() {
                 <Product />
               </Layout>
             }
-          />
+            />
         </Route>
         <Route
           path="/checkout"
@@ -58,9 +60,10 @@ export function App() {
               <Checkout />
             </Layout>
           }
-        />
+          />
 
       </Routes>
+    </CartProvider>
   );
 }
 
