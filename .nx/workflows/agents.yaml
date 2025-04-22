@@ -23,6 +23,6 @@ launch-templates:
       - name: Install Browsers (if needed)
         uses: 'nrwl/nx-cloud-workflows/v4/workflow-steps/install-browsers/main.yaml'
       - name: Install System Dependencies
-        run: |
+        script: |
           sudo apt-get update
           sudo apt-get install -y libgtk-4.so.1 libgraphene-1.0.so.0 libavif.so.13
