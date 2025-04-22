@@ -22,7 +22,7 @@ jobs:
       - name: Set SHAs
         uses: nrwl/nx-set-shas@v4
 
-      - run: npx nx-cloud start-ci-run --distribute-on="3 custom-medium-js" --stop-agents-after="e2e-ci"
+      - run: npx nx-cloud start-ci-run --distribute-on="3 linux-medium-js" --stop-agents-after="e2e-ci"
 
       # Cache node_modules
       - uses: actions/setup-node@v4
