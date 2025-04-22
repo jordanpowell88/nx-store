@@ -34,7 +34,7 @@ jobs:
         run: npm ci
 
       - name: Install Playwright
-        run: npm install playwright --with-deps
+        run: npx playwright install --with-deps
 
       - name: Run tests
         run: npx nx affected -t lint,test,build,e2e-ci --parallel=3
