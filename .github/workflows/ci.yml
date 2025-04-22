@@ -28,10 +28,6 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
-
-      - run: npm ci
-      - name: Install Playwright
-        run: npm install playwright --with-deps
       - uses: nrwl/nx-set-shas@v4
 
       - run: npx nx affected -t lint,test,build,e2e-ci --parallel=3
