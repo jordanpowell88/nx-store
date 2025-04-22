@@ -30,6 +30,14 @@ jobs:
           node-version: 20
           cache: 'npm'
 
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libgtk-4-1 \
+            libgraphene-1.0-0 \
+            libavif9 
+
       - name: Install dependencies
         run: npm ci
 
