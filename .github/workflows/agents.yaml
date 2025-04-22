@@ -1,0 +1,40 @@
+common-init-steps: &common-init-steps
+  - name: Checkout
+    # using a reusable step in an external GitHub repo,
+    # this step is provided by Nx Cloud: https://github.com/nrwl/nx-cloud-workflows/tree/main/workflow-steps
+    uses: 'nrwl/nx-cloud-workflows/v5/workflow-steps/checkout/main.yaml'
+  # group these steps together as they related (it doesn't change anything functionally, but it helps with organising your steps as they will be collapsed together in the UI)
+  - group-name: Restore Cache
+    steps:
+      - name: Restore Node Modules Cache
+        uses: 'nrwl/nx-cloud-workflows/v5/workflow-steps/cache/main.yaml'
+        # the cache step requires configuration via env vars
+        # https://github.com/nrwl/nx-cloud-workflows/tree/main/workflow-steps/cache#options
+        inputs:
+          key: 'package-lock.json|yarn.lock|pnpm-lock.yaml'
+          paths: |
+            ~/.npm
+            # or ~/.cache/yarn
+            # or .pnpm-store
+          base-branch: 'main'
+      - name: Restore Browser Binary Cache
+        uses: 'nrwl/nx-cloud-workflows/v5/workflow-steps/cache/main.yaml'
+        inputs:
+          key: 'package-lock.json|yarn.lock|pnpm-lock.yaml|"browsers"'
+          paths: |
+            '~/.cache/Cypress'
+          base-branch: 'main'
+  - name: Install Node Modules
+    uses: 'nrwl/nx-cloud-workflows/v5/workflow-steps/install-node-modules/main.yaml'
+  - name: Install Browsers (if needed)
+    uses: 'nrwl/nx-cloud-workflows/v5/workflow-steps/install-browsers/main.yaml'
+
+launch-templates:
+    my-linux-medium-js:
+        resource-class: 'docker_linux_amd64/medium'
+        image: 'ubuntu22.04-node20.11-v9'
+        init-steps: *common-init-steps
+    my-linux-large-js:
+        resource-class: 'docker_linux_amd64/large'
+        image: 'ubuntu22.04-node20.11-v9'
+        init-steps: *common-init-steps
