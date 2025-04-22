@@ -34,9 +34,9 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y \
-            libgtk-4-1 \
-            libgraphene-1.0-0 \
-            libavif9 
+            libgtk-4.so.1 \
+            libgraphene-1.0.so.0 \
+            libavif.so.13
 
       - name: Install dependencies
         run: npm ci
