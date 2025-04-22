@@ -6,23 +6,19 @@ on:
       - main
   pull_request:
 
-permissions:
-  actions: read
-  contents: read
-
 jobs:
   main:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Fetch all history and branches
+          fetch-depth: 0 # Fetch all history and branches
           filter: tree:0
 
       - name: Set SHAs
         uses: nrwl/nx-set-shas@v4
-          
-      - run: npx nx-cloud start-ci-run --distribute-on="3 my-linux-medium-js" --stop-agents-after="e2e-ci"
+
+      - run: npx nx-cloud start-ci-run --distribute-on="3 my-custom-template" --stop-agents-after="e2e-ci"
 
       # Cache node_modules
       - uses: actions/setup-node@v4
