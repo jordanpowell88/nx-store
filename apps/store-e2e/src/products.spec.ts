@@ -44,6 +44,14 @@ test('can navigate to products page', async ({ page }) => {
     // Verify navigation to first product's details page
     await expect(page).toHaveURL('/products/1');
   });
+
+  test('can filter products', async ({ page }) => {
+    await page.goto('/products');
+    await page.locator('input').fill('shirt');
+    await expect(page.locator('[data-testid="product-thumbnail"]')).toHaveCount(2);
+    await page.locator('input').fill('');
+    await expect(page.locator('[data-testid="product-thumbnail"]')).toHaveCount(20);
+  });
   
   test('can navigate to product details page', async ({ page }) => {
     await page.goto('/products/1');
