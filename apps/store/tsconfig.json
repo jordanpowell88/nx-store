@@ -12,9 +12,6 @@
       "path": "../../libs/products/product"
     },
     {
-      "path": "../../libs/products"
-    },
-    {
       "path": "./tsconfig.app.json"
     },
     {

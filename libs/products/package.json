@@ -12,6 +12,14 @@
     "./package.json": "./package.json"
   },
   "nx": {
-    "name": "products"
+    "name": "products",
+    "targets": {
+      "e2e": {
+        "dependsOn": ["^build", { "target": "build", "projects": "store" }]
+      },
+      "e2e:ui": {
+        "dependsOn": ["^build", { "target": "build", "projects": "store" }]
+      }
+    }
   }
 }
