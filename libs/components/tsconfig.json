@@ -3,15 +3,6 @@
   "include": [],
   "references": [
     {
-      "path": "../components"
-    },
-    {
-      "path": "product"
-    },
-    {
-      "path": "../types"
-    },
-    {
       "path": "./tsconfig.lib.json"
     }
   ],

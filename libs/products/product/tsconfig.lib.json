@@ -33,6 +33,9 @@
       "path": "../../cart-context/tsconfig.lib.json"
     },
     {
+      "path": "../../components/tsconfig.lib.json"
+    },
+    {
       "path": "../../utils/tsconfig.lib.json"
     },
     {
