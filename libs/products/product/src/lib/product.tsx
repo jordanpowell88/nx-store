@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import styles from './product.module.scss';
 import { ProductDetails } from './product-details/product-details';
 import { useCart } from '@nx-bitovi/cart-context';
-import { Button } from '@nx-bitovi/components';
+import { Alert, Button } from '@nx-bitovi/components';
 
 export const Product = () => {
   const [productDetails, setProductDetails] = useState<ProductType | null>(
@@ -46,7 +46,7 @@ export const Product = () => {
       <ProductDetails product={productDetails} />
       <img src={productDetails.image} alt={productDetails.title} />
       {message ? (
-        <p className={styles['message']}>{message}</p>
+        <Alert type="success" onClose={() => setMessage('')}>{message}</Alert>
       ) : (
         <Button onClick={handleAddToCart}>
           Add to Cart{' '}
