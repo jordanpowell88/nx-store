@@ -3,6 +3,7 @@ import styles from './checkout.module.scss';
 import { Item } from '@nx-bitovi/item';
 import { useCart } from '@nx-bitovi/cart-context';
 import { formatPrice } from '@nx-bitovi/utils';
+import { Button } from '@nx-bitovi/components';
 
 export function Checkout() {
   const { items, clearCart } = useCart();
@@ -23,7 +24,7 @@ export function Checkout() {
       )}
       {items.length > 0 && (
         <div className={styles['totalContainer']}>
-          <button onClick={() => clearCart()}>Clear Cart</button>
+          <Button onClick={() => clearCart()}>Clear Cart</Button>
           <p className={styles['total']}>Total: {formatPrice(total)}</p>
         </div>
       )}
