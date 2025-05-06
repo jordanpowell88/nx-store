@@ -21,17 +21,18 @@ jobs:
 
       - name: Set SHAs
         uses: nrwl/nx-set-shas@v4
+
       
       - name: Check Formatting
-        run: npx nx-cloud record -- nx format:check
+        run: npx nx-cloud record -- npx nx format:check
 
       - name: Check Sync
-        run: npx nx-cloud record -- nx sync:check
+        run: npx nx-cloud record -- npx nx sync:check
+
       - name: Enforce All Conformance Rules
-        run: npx nx-cloud record -- nx conformance:check
+        run: npx nx-cloud record -- npx nx conformance:check
 
       - run: npx nx-cloud start-ci-run --distribute-on="3 linux-medium-js" --stop-agents-after="e2e-ci"
-
 
       # Cache node_modules
       - uses: actions/setup-node@v4
