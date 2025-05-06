@@ -12,6 +12,9 @@
     "./package.json": "./package.json"
   },
   "nx": {
-    "name": "cart-context"
+    "name": "cart-context",
+    "tags": [
+      "a-team"
+    ]
   }
 }

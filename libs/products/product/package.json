@@ -12,6 +12,9 @@
     "./package.json": "./package.json"
   },
   "nx": {
-    "name": "product"
+    "name": "product",
+    "tags": [
+      "a-team"
+    ]
   }
 }

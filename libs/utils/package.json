@@ -12,6 +12,9 @@
     "./package.json": "./package.json"
   },
   "nx": {
-    "name": "utils"
+    "name": "utils",
+    "tags": [
+      "core"
+    ]
   }
 }

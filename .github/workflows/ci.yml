@@ -22,15 +22,23 @@ jobs:
       - name: Set SHAs
         uses: nrwl/nx-set-shas@v4
 
-      - run: npx nx-cloud start-ci-run --distribute-on="3 linux-medium-js" --stop-agents-after="e2e-ci"
+      - name: Start CI Run
+        run: npx nx-cloud start-ci-run --distribute-on="3 linux-medium-js" --stop-agents-after="e2e-ci"
 
-      # Cache node_modules
-      - uses: actions/setup-node@v4
+      - name: Cache node_modules
+        uses: actions/setup-node@v4
         with:
           node-version: 20
-
       - name: Install dependencies
         run: npm ci
+      - name: Check Formatting
+        run: npx nx-cloud record -- nx format:check
+
+      - name: Check Sync
+        run: npx nx-cloud record -- nx sync:check
+
+      - name: Enforce All Conformance Rules
+        run: npx nx-cloud record -- npx nx conformance:check
 
       - name: Run tests
         run: npx nx affected -t lint,test,build,e2e-ci --parallel=3

@@ -12,6 +12,9 @@
     "./package.json": "./package.json"
   },
   "nx": {
-    "name": "components"
+    "name": "components",
+    "tags": [
+      "design"
+    ]
   }
 }
