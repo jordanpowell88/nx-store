@@ -13,6 +13,7 @@
   },
   "nx": {
     "name": "products",
+    "tags": ["a-team"],
     "targets": {
       "e2e": {
         "dependsOn": ["^build", { "target": "build", "projects": "store" }]

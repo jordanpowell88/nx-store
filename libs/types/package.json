@@ -14,7 +14,8 @@
     "./package.json": "./package.json"
   },
   "nx": {
-    "name": "types"
+    "name": "types",
+    "tags": ["a-team"]
   },
   "dependencies": {}
 }
