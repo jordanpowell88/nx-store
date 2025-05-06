@@ -15,7 +15,9 @@
   },
   "nx": {
     "name": "types",
-    "tags": ["core"]
+    "tags": [
+      "core"
+    ]
   },
   "dependencies": {}
 }

@@ -13,6 +13,8 @@
   },
   "nx": {
     "name": "components",
-    "tags": ["design"]
+    "tags": [
+      "design"
+    ]
   }
 }

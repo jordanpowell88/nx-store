@@ -13,6 +13,8 @@
   },
   "nx": {
     "name": "checkout",
-    "tags": ["a-team"]
+    "tags": [
+      "a-team"
+    ]
   }
 }

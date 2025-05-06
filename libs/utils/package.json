@@ -13,6 +13,8 @@
   },
   "nx": {
     "name": "utils",
-    "tags": ["core"]
+    "tags": [
+      "core"
+    ]
   }
 }

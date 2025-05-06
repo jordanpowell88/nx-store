@@ -13,6 +13,8 @@
   },
   "nx": {
     "name": "product",
-    "tags": ["a-team"]
+    "tags": [
+      "a-team"
+    ]
   }
 }

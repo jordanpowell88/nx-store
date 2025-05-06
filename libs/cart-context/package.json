@@ -13,6 +13,8 @@
   },
   "nx": {
     "name": "cart-context",
-    "tags": ["a-team"]
+    "tags": [
+      "a-team"
+    ]
   }
 }
