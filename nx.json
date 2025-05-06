@@ -133,6 +133,11 @@
         "description": "The QA Team own these projects",
         "files": ["apps/store-e2e/**"],
         "owners": ["@jordanpowell88"]
+      },
+      {
+        "description": "The Core team own these projects",
+        "projects": ["tag:core"],
+        "owners": ["@jordanpowell88"]
       }
     ]
   },
@@ -140,6 +145,33 @@
     "rules": [
       {
         "rule": "@nx/conformance/ensure-owners"
+      },
+      {
+        "rule": "@nx/conformance/enforce-project-boundaries",
+        "options": {
+          "depConstraints": [
+            {
+              "sourceTag": "design",
+              "onlyDependOnLibsWithTags": ["core", "design"]
+            },
+            {
+              "sourceTag": "qa",
+              "onlyDependOnLibsWithTags": ["qa"]
+            },
+            {
+              "sourceTag": "dev-ops",
+              "onlyDependOnLibsWithTags": ["dev-ops"]
+            },
+            {
+              "sourceTag": "a-team",
+              "onlyDependOnLibsWithTags": ["design", "a-team", "core"]
+            },
+            {
+              "sourceTag": "core",
+              "onlyDependOnLibsWithTags": ["core"]
+            }
+          ]
+        }
       }
     ]
   }

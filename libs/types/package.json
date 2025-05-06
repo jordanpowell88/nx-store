@@ -15,7 +15,7 @@
   },
   "nx": {
     "name": "types",
-    "tags": ["a-team"]
+    "tags": ["core"]
   },
   "dependencies": {}
 }
