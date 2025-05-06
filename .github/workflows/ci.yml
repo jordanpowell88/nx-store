@@ -22,6 +22,9 @@ jobs:
       - name: Set SHAs
         uses: nrwl/nx-set-shas@v4
 
+      - name: Enforce All Conformance Rules
+        run: npx nx-cloud record -- nx nx conformance
+
       - run: npx nx-cloud start-ci-run --distribute-on="3 linux-medium-js" --stop-agents-after="e2e-ci"
 
       # Cache node_modules
