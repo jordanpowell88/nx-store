@@ -3,16 +3,34 @@
 # ------------------------------------------------------------------------------------------------------------
 
 # Dev Ops teams own all the CI/CD pipelines
-.github/workflows/** @dev-ops
+.github/workflows/** @jordanpowell88
 
 # The QA Team own these projects
-apps/store-e2e/** @qa
+apps/store-e2e/** @jordanpowell88
 
 # The A team own these projects
-/libs/products/product/ @a-team
+/libs/products/product/ @jordanpowell88
+
+# The A team own these projects
+/libs/checkout/item/ @jordanpowell88
+
+# The A team own these projects
+/libs/cart-context/ @jordanpowell88
 
 # The design team own these projects
-/libs/components/ @design
+/libs/components/ @jordanpowell88
 
 # The A team own these projects
-/apps/store/ @a-team
+/libs/checkout/ @jordanpowell88
+
+# The A team own these projects
+/libs/products/ @jordanpowell88
+
+# The A team own these projects
+/apps/store/ @jordanpowell88
+
+# The A team own these projects
+/libs/types/ @jordanpowell88
+
+# The A team own these projects
+/libs/utils/ @jordanpowell88

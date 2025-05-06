@@ -117,22 +117,22 @@
       {
         "description": "Dev Ops teams own all the CI/CD pipelines",
         "files": [".github/workflows/**"],
-        "owners": ["@dev-ops"]
+        "owners": ["@jordanpowell88"]
       },
       {
         "description": "The design team own these projects",
         "projects": ["tag:design"],
-        "owners": ["@design"]
+        "owners": ["@jordanpowell88"]
       },
       {
         "description": "The A team own these projects",
         "projects": ["tag:a-team"],
-        "owners": ["@a-team"]
+        "owners": ["@jordanpowell88"]
       },
       {
         "description": "The QA Team own these projects",
         "files": ["apps/store-e2e/**"],
-        "owners": ["@qa"]
+        "owners": ["@jordanpowell88"]
       }
     ]
   },
