@@ -7,6 +7,8 @@
 
 # The QA Team own these projects
 apps/store-e2e/** @jordanpowell88
+# The QA Team own these projects
+tools/bitovi-atomizer/** @jordanpowell88
 
 # The A team own these projects
 /libs/products/product/ @jordanpowell88
