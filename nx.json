@@ -137,7 +137,7 @@
       },
       {
         "description": "The QA Team own these projects",
-        "files": ["apps/store-e2e/**"],
+        "files": ["apps/store-e2e/**", "tools/bitovi-atomizer/**"],
         "owners": ["@jordanpowell88"]
       },
       {
