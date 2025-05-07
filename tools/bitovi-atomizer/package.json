@@ -1,0 +1,49 @@
+{
+  "name": "@nx-bitovi/bitovi-atomizer",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "development": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "nx": {
+    "targets": {
+      "build": {
+        "executor": "@nx/js:tsc",
+        "outputs": [
+          "{options.outputPath}"
+        ],
+        "options": {
+          "outputPath": "tools/bitovi-atomizer/dist",
+          "main": "tools/bitovi-atomizer/src/index.ts",
+          "tsConfig": "tools/bitovi-atomizer/tsconfig.lib.json",
+          "rootDir": "tools/bitovi-atomizer/src",
+          "generatePackageJson": false,
+          "assets": [
+            {
+              "input": "./tools/bitovi-atomizer/src",
+              "glob": "**/!(*.ts)",
+              "output": "."
+            },
+            {
+              "input": "./tools/bitovi-atomizer/src",
+              "glob": "**/*.d.ts",
+              "output": "."
+            }
+          ]
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  }
+}
