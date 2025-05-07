@@ -214,8 +214,6 @@ async function buildPlaywrightTargets(
     ),
   };
 
-  console.log('configFilePath', configFilePath);
-
   if (options.ciTargetName) {
     const ciBaseTargetConfig: TargetConfiguration = {
       ...baseTargetConfig,
@@ -259,14 +257,13 @@ async function buildPlaywrightTargets(
         ciTargetGroup.push(targetName);
 
         const inputs = [
-          testFile,
-          configFilePath,
+          `{workspaceRoot}/${testFile}`,
+          `{workspaceRoot}/${configFilePath}`,
           // TODO: walk the tree for relative imports
           ...('production' in namedInputs ? ['^production'] : ['^default']),
           { externalDependencies: ['@playwright/test'] },
         ];
 
-        console.log('inputs', inputs);
         targets[targetName] = {
           ...ciBaseTargetConfig,
           inputs,
