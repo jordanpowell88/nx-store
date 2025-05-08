@@ -37,6 +37,8 @@ test('can navigate to products page', async ({ page }) => {
     await expect(productItems.nth(17).locator('a')).toHaveAttribute('href', '/products/18');
     await expect(productItems.nth(18).locator('a')).toHaveAttribute('href', '/products/19');
     await expect(productItems.nth(19).locator('a')).toHaveAttribute('href', '/products/20');
+
+    expect(true).toBe(false);
   
     // Click first product thumbnail
     await productItems.nth(0).click();

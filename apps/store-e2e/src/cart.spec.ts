@@ -8,7 +8,7 @@ test('can add product to cart', async ({ page }) => {
     await navItems.nth(2).click();
   
     await expect(page.locator('h1')).toContainText('Cart');
-    await expect(page.locator('text=No items in cart')).not.toBeVisible();
+    await expect(page.locator('text=No items in cart')).toBeHidden();
     await expect(page.locator('text=Total: $')).toBeVisible();
   });
   
@@ -19,7 +19,7 @@ test('can add product to cart', async ({ page }) => {
     await navItems.nth(2).click();
     await page.click('button:has-text("X")');
     await expect(page.locator('text=No items in cart')).toBeVisible();
-    await expect(page.locator('text=Total: $')).not.toBeVisible();
+    await expect(page.locator('text=Total: $')).toBeHidden();
   });
   
   test('can clear cart', async ({ page }) => {
