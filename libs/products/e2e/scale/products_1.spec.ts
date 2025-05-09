@@ -1,4 +1,6 @@
 import { test, expect } from '@playwright/test';
+// eslint-disable-next-line @nx/enforce-module-boundaries
+import { TEST_NAME, TEST_NAME_2, TEST_NAME_3, TEST_NAME_4, TEST_NAME_5, TEST_NAME_6, TEST_NAME_7 } from '../../src/lib/util';
 
 test('can navigate to products page', async ({ page }) => {
     await page.goto('/');
@@ -50,3 +52,13 @@ test('can navigate to products page', async ({ page }) => {
     await expect(page.locator('h1')).toContainText('Fjallraven');
     await expect(page.locator('img')).toHaveAttribute('src', 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg');
   });
+
+  test('can check imports', () => {
+    expect(TEST_NAME).toBe('test name 1');
+    expect(TEST_NAME_2).toBe('test name 2');
+    expect(TEST_NAME_3).toBe('test name 3');
+    expect(TEST_NAME_4).toBe('test name 4');
+    expect(TEST_NAME_5).toBe('test name 5');
+    expect(TEST_NAME_6).toBe('test name 6');
+    expect(TEST_NAME_7).toBe('test name 7');
+  })

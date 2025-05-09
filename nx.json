@@ -71,7 +71,8 @@
       "plugin": "./tools/bitovi-atomizer/src/plugin.ts",
       "options": {
         "targetName": "e2e",
-        "ciTargetName": "e2e-ci"
+        "ciTargetName": "e2e-ci",
+        "testIsolation": true
       }
     },
     {

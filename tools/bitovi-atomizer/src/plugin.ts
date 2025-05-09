@@ -6,6 +6,7 @@ import {
   CreateNodesContext,
   createNodesFromFiles,
   CreateNodesV2,
+  DependencyType,
   detectPackageManager,
   getPackageManagerCommand,
   joinPathFragments,
@@ -26,17 +27,20 @@ import { workspaceDataDirectory } from 'nx/src/utils/cache-directory';
 import { getLockFileName } from '@nx/js';
 import { loadConfigFile } from '@nx/devkit/src/utils/config-utils';
 import { hashObject } from 'nx/src/hasher/file-hasher';
+import { TypeScriptImportLocator } from 'nx/src/plugins/js/project-graph/build-dependencies/typescript-import-locator';
 
 const pmc = getPackageManagerCommand();
 
 export interface PlaywrightPluginOptions {
   targetName?: string;
   ciTargetName?: string;
+  testIsolation?: boolean;
 }
 
 interface NormalizedOptions {
   targetName: string;
   ciTargetName?: string;
+  testIsolation: boolean;
 }
 
 type PlaywrightTargets = Pick<ProjectConfiguration, 'targets' | 'metadata'>;
@@ -256,13 +260,21 @@ async function buildPlaywrightTargets(
         const targetName = `${options.ciTargetName}--${relativeSpecFilePath}`;
         ciTargetGroup.push(targetName);
 
-        const inputs = [
-          `{workspaceRoot}/${testFile}`,
-          `{workspaceRoot}/${configFilePath}`,
-          // TODO: walk the tree for relative imports
-          ...('production' in namedInputs ? ['^production'] : ['^default']),
-          { externalDependencies: ['@playwright/test'] },
-        ];
+        let inputs: TargetConfiguration['inputs'] = [];
+        
+        if (options.testIsolation) {
+            const importLocator = new TypeScriptImportLocator();
+            const visitedFiles = new Set<string>();
+            const relativeImports = collectRelativeImports(testFile, importLocator, visitedFiles);
+
+            inputs = [
+                `{workspaceRoot}/${testFile}`,
+                `{workspaceRoot}/${configFilePath}`,
+                ...relativeImports.map(imp => `{workspaceRoot}/${imp}`),
+                ...('production' in namedInputs ? ['^production'] : ['^default']),
+                { externalDependencies: ['@playwright/test'] },
+            ];
+        }
 
         targets[targetName] = {
           ...ciBaseTargetConfig,
@@ -392,6 +404,7 @@ function normalizeOptions(options: PlaywrightPluginOptions): NormalizedOptions {
     ...options,
     targetName: options?.targetName ?? 'e2e',
     ciTargetName: options?.ciTargetName ?? 'e2e-ci',
+    testIsolation: options?.testIsolation ?? false,
   };
 }
 
@@ -581,4 +594,30 @@ function getOutputEnvVars(
     }
   }
   return env;
+}
+
+function collectRelativeImports(
+  filePath: string,
+  importLocator: TypeScriptImportLocator,
+  visitedFiles: Set<string> = new Set()
+): string[] {
+  const normalizedPath = normalizePath(filePath);
+  
+  if (visitedFiles.has(normalizedPath)) {
+    return [];
+  }
+  visitedFiles.add(normalizedPath);
+
+  const imports: string[] = [];
+  const visitorFunc = (importExpression: string, currentFilePath: string, type: DependencyType) => {
+    if (importExpression.startsWith('./') || importExpression.startsWith('../')) {
+      const resolvedPath = normalizePath(join(dirname(currentFilePath), importExpression));
+      const withTsExt = resolvedPath.endsWith('.ts') ? resolvedPath : resolvedPath + '.ts';
+      imports.push(withTsExt);
+      imports.push(...collectRelativeImports(withTsExt, importLocator, visitedFiles));
+    }
+  };
+
+  importLocator.fromFile(filePath, visitorFunc);
+  return imports;
 }
