@@ -6,6 +6,11 @@
     "name": "store",
     "tags": [
       "a-team"
-    ]
+    ],
+    "targets": {
+      "serve": {
+        "continous": true
+      }
+    }
   }
 }
