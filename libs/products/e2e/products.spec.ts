@@ -98,8 +98,6 @@ test('can navigate to products page', async ({ page }) => {
     '/products/20'
   );
 
-  expect(true).toBe(false);
-
   // Click first product thumbnail
   await productItems.nth(0).click();
 
