@@ -14,3 +14,4 @@ export const TEST_NAME_4 = 'test name 4';
 export const TEST_NAME_5 = 'test name 5';
 export const TEST_NAME_6 = 'test name 6';
 export const TEST_NAME_7 = 'test name 7';
+export const TEST_NAME_8 = 'test name 8';
