@@ -1,4 +1,4 @@
-import { TEST_NAME_2 as testName2, TEST_NAME_3 as testName3 } from "./util2";
+import { TEST_NAME_2 as testName2, TEST_NAME_3 as testName3 } from './util2';
 
 export const TEST_NAME = 'test name 1';
 export const TEST_NAME_2 = testName2;

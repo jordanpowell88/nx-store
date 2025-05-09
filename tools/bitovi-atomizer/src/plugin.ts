@@ -261,19 +261,23 @@ async function buildPlaywrightTargets(
         ciTargetGroup.push(targetName);
 
         let inputs: TargetConfiguration['inputs'] = [];
-        
-        if (options.testIsolation) {
-            const importLocator = new TypeScriptImportLocator();
-            const visitedFiles = new Set<string>();
-            const relativeImports = collectRelativeImports(testFile, importLocator, visitedFiles);
 
-            inputs = [
-                `{workspaceRoot}/${testFile}`,
-                `{workspaceRoot}/${configFilePath}`,
-                ...relativeImports.map(imp => `{workspaceRoot}/${imp}`),
-                ...('production' in namedInputs ? ['^production'] : ['^default']),
-                { externalDependencies: ['@playwright/test'] },
-            ];
+        if (options.testIsolation) {
+          const importLocator = new TypeScriptImportLocator();
+          const visitedFiles = new Set<string>();
+          const relativeImports = collectRelativeImports(
+            testFile,
+            importLocator,
+            visitedFiles
+          );
+
+          inputs = [
+            `{workspaceRoot}/${testFile}`,
+            `{workspaceRoot}/${configFilePath}`,
+            ...relativeImports.map((imp) => `{workspaceRoot}/${imp}`),
+            ...('production' in namedInputs ? ['^production'] : ['^default']),
+            { externalDependencies: ['@playwright/test'] },
+          ];
         }
 
         targets[targetName] = {
@@ -602,19 +606,32 @@ function collectRelativeImports(
   visitedFiles: Set<string> = new Set()
 ): string[] {
   const normalizedPath = normalizePath(filePath);
-  
+
   if (visitedFiles.has(normalizedPath)) {
     return [];
   }
   visitedFiles.add(normalizedPath);
 
   const imports: string[] = [];
-  const visitorFunc = (importExpression: string, currentFilePath: string, type: DependencyType) => {
-    if (importExpression.startsWith('./') || importExpression.startsWith('../')) {
-      const resolvedPath = normalizePath(join(dirname(currentFilePath), importExpression));
-      const withTsExt = resolvedPath.endsWith('.ts') ? resolvedPath : resolvedPath + '.ts';
+  const visitorFunc = (
+    importExpression: string,
+    currentFilePath: string,
+    type: DependencyType
+  ) => {
+    if (
+      importExpression.startsWith('./') ||
+      importExpression.startsWith('../')
+    ) {
+      const resolvedPath = normalizePath(
+        join(dirname(currentFilePath), importExpression)
+      );
+      const withTsExt = resolvedPath.endsWith('.ts')
+        ? resolvedPath
+        : resolvedPath + '.ts';
       imports.push(withTsExt);
-      imports.push(...collectRelativeImports(withTsExt, importLocator, visitedFiles));
+      imports.push(
+        ...collectRelativeImports(withTsExt, importLocator, visitedFiles)
+      );
     }
   };
 
