@@ -68,9 +68,11 @@
       }
     },
     {
-      "plugin": "@nx/playwright/plugin",
+      "plugin": "./tools/bitovi-atomizer/src/plugin.ts",
       "options": {
-        "targetName": "e2e"
+        "targetName": "e2e",
+        "ciTargetName": "e2e-ci",
+        "testIsolation": true
       }
     },
     {
@@ -90,6 +92,11 @@
     },
     "e2e-ci--**/*": {
       "dependsOn": ["^build"]
+    },
+    "@nx/js:tsc": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
     }
   },
   "generators": {
@@ -131,7 +138,7 @@
       },
       {
         "description": "The QA Team own these projects",
-        "files": ["apps/store-e2e/**"],
+        "files": ["apps/store-e2e/**", "tools/bitovi-atomizer/**"],
         "owners": ["@jordanpowell88"]
       },
       {
