@@ -5,6 +5,16 @@
   "nx": {
     "implicitDependencies": [
       "store"
-    ]
+    ],
+    "targets": {
+      "e2e": {
+        "dependsOn": [
+          {
+            "projects": "store",
+            "target": "serve"
+          }
+        ]
+      }
+    }
   }
 }
