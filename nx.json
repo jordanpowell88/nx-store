@@ -24,9 +24,7 @@
     {
       "plugin": "@nx/js/typescript",
       "options": {
-        "typecheck": {
-          "targetName": "typecheck"
-        },
+        "typecheck": { "targetName": "typecheck" },
         "build": {
           "targetName": "build",
           "configName": "tsconfig.lib.json",
@@ -47,12 +45,7 @@
         "typecheckTargetName": "typecheck"
       }
     },
-    {
-      "plugin": "@nx/eslint/plugin",
-      "options": {
-        "targetName": "lint"
-      }
-    },
+    { "plugin": "@nx/eslint/plugin", "options": { "targetName": "lint" } },
     {
       "plugin": "@nx/vite/plugin",
       "options": {
@@ -78,21 +71,13 @@
     {
       "plugin": "@nx/js/typescript",
       "include": ["libs/types/*"],
-      "options": {
-        "typecheck": {
-          "targetName": "typecheck"
-        }
-      }
+      "options": { "typecheck": { "targetName": "typecheck" } }
     },
     "@nx/owners"
   ],
   "targetDefaults": {
-    "test": {
-      "dependsOn": ["^build"]
-    },
-    "e2e-ci--**/*": {
-      "dependsOn": ["^build"]
-    },
+    "test": { "dependsOn": ["^build"] },
+    "e2e-ci--**/*": { "dependsOn": ["^build"] },
     "@nx/js:tsc": {
       "cache": true,
       "dependsOn": ["^build"],
@@ -107,9 +92,7 @@
         "linter": "eslint",
         "bundler": "vite"
       },
-      "component": {
-        "style": "scss"
-      },
+      "component": { "style": "scss" },
       "library": {
         "style": "scss",
         "linter": "eslint",
@@ -150,9 +133,7 @@
   },
   "conformance": {
     "rules": [
-      {
-        "rule": "@nx/conformance/ensure-owners"
-      },
+      { "rule": "@nx/conformance/ensure-owners" },
       {
         "rule": "@nx/conformance/enforce-project-boundaries",
         "options": {
@@ -161,25 +142,18 @@
               "sourceTag": "design",
               "onlyDependOnLibsWithTags": ["core", "design"]
             },
-            {
-              "sourceTag": "qa",
-              "onlyDependOnLibsWithTags": ["qa"]
-            },
-            {
-              "sourceTag": "dev-ops",
-              "onlyDependOnLibsWithTags": ["dev-ops"]
-            },
+            { "sourceTag": "qa", "onlyDependOnLibsWithTags": ["qa"] },
+            { "sourceTag": "dev-ops", "onlyDependOnLibsWithTags": ["dev-ops"] },
             {
               "sourceTag": "a-team",
               "onlyDependOnLibsWithTags": ["design", "a-team", "core"]
             },
-            {
-              "sourceTag": "core",
-              "onlyDependOnLibsWithTags": ["core"]
-            }
+            { "sourceTag": "core", "onlyDependOnLibsWithTags": ["core"] }
           ]
         }
       }
     ]
-  }
+  },
+  "nxCloudId": "68507c5c80da91106fb8244f",
+  "nxCloudUrl": "https://staging.nx.app"
 }
